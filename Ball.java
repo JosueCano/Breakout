@@ -70,15 +70,22 @@ public class Ball extends Actor
     public void act() 
     {          
         setLocation(getX () + velX,  getY () + velY);
-        if(getX()<=radius||getX()>=BreakoutWorld.WIDTH-radius){
+        if(getX() <= radius || getX() >= BreakoutWorld.WIDTH-radius){
              velX = -1 * velX;
         }
-        if (getY()<=radius || isTouching(Paddle.class))  {
+        if (getY() <= radius || isTouching(Paddle.class))  {
              velY = -1 * velY;             
         }
         if(isTouching(Brick.class)){
-            velY = -1 * velY;           
+            World mundo = getWorld();
+            velY = -1 * velY;
             removeTouching(Brick.class);
+            ((BreakoutWorld)mundo).checkIfWon();
+        }
+        if (getY() >= BreakoutWorld.HEIGHT-radius){
+            World mundo = getWorld();
+            getWorld().removeObject(this);
+            ((BreakoutWorld)mundo).newBall();
         }
     } 
     /**

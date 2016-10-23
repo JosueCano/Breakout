@@ -59,15 +59,14 @@ public class Paddle extends Actor
      */
     public void act() 
     {
-        if(Greenfoot.isKeyDown("left")){
+        if(Greenfoot.isKeyDown("left") && getX() >= width/2){
             move(-moveAmount);
         }
         else
-            if(Greenfoot.isKeyDown("right")){
+            if(Greenfoot.isKeyDown("right") && getX() <= BreakoutWorld.WIDTH-width/2){
                 move(moveAmount);
             }
     }
-    
     /**
      * Method to create and set the image for this paddle.  Invoke
      * this method again when the width, height, or color change.
