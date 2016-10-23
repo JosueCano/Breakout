@@ -63,7 +63,6 @@ public class Ball extends Actor
     
     ///////////////////// Methods ///////////////////////////////
     
-    
     /**
      * Balls will move and check if they have hit a brick or paddle or
      * one of the edges of the world
